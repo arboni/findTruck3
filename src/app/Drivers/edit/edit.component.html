@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<div class="row">
+  <div class="col-lg-5 mb-3 ml-5 mt-5 mr-3">
+    <form (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" class="form-control" [(ngModel)]="driver.nome" name="nome"
+        placeholder="informe o Nome">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+
+      <div class="form-group">
+        <label>Telefone</label>
+        <input type="tel" class="form-control" [(ngModel)]="driver.telefone" name="telefone"
+        placeholder="informe o telefone">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+
+  </div>
+
+  <div class="col-lg-3 mb-3 mt-5 ml-3 mr-3">
+    <p class="text-success">Se você tem uma empresa pode divulgar seu produto</p>
+    <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+      <div class="card-header">Monitoramento</div>
+      <div class="card-body">
+        <h4 class="card-title">Acompanhamento da carga</h4>
+        <p class="card-text">Você consegue acompanhar o deslocamento de sua carga durante todo o trajeto em tempo real
+          pelo mapa</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-lg-3 mt-5 mb-3">
+    <p class="text-info">Plataforma PWA para otimizar as informações.</p>
+    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+      <div class="card-header">Arquitetura</div>
+      <div class="card-body">
+        <h4 class="card-title">Firebase Cloud</h4>
+        <p class="card-text">Aplicação utiliza integração com banco de dados na nuvem otimizando a informação e
+          integração de dados</p>
+      </div>
+    </div>
+  </div>
+</div>

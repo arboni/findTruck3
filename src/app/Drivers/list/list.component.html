@@ -1,0 +1,68 @@
+<!--Begin of List Component-->
+<app-header></app-header>
+<div class="container">
+<div class="card-body mt-5">
+  <h2>Algumas cargas disponíveis para transportar adicionadas recentemente.</h2>
+  </div>
+  <table class="table table-hover" *ngFor="let driver of drivers | async">
+    <thead>
+      <tr>
+        <th scope="col">Empresa</th>
+        <th scope="col">Tipo de Carga</th>
+        <th scope="col">Origem</th>
+        <th scope="col">Destino</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-info">
+        <th scope="row">{{driver.nome}}</th>
+        <td>{{driver.telefone}}e</td>
+        <td>Porto Alegre/RS</td>
+        <td>Rio Grande/RS</td>
+      </tr>
+      <tr class="table-info">
+        <th scope="row">Chamichung Equipamentos Eletrônicos</th>
+        <td>Palette</td>
+        <td>Manaus/AM</td>
+        <td>Porto Alegre/RS</td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">Aderbal Distribuidora</th>
+        <td>Container</td>
+        <td>Porto Alegre/RS</td>
+        <td>São Paulo/SP</td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">Ribas Alimentos</th>
+        <td>Baú/Bi-trem</td>
+        <td>Pelotas/RS</td>
+        <td>Ribeirão Preto/SP</td>
+      </tr>
+      <tr class="table-danger">
+        <th scope="row">KLF Indústria Química</th>
+        <td>Carga Perigosa</td>
+        <td>Gravataí/RS</td>
+        <td>Rio de Janeiro/RJ</td>
+      </tr>
+      <tr class="table-warning">
+        <th scope="row">PST Insumos Agrícolas</th>
+        <td>Agrotóxicos</td>
+        <td>Santa Maria/RS</td>
+        <td>Campinas/SP</td>
+      </tr>
+      <tr class="table-light">
+        <th scope="row">Extremme Tools</th>
+        <td>Ferramentas Diversas</td>
+        <td>Porto Alegre/RS</td>
+        <td>Belo Horizonte/MG</td>
+      </tr>
+    </tbody>
+    <div class="card-footer">
+      <button type="button" class="btn btn-primary"(click)="edit(driver, driver.key)">Editar</button>
+      <button type="button" class="btn btn-outline-warning"(click)="delete(driver.key)">Excluir Cadastro</button>
+    </div>
+  </table>
+  <div class="card-footer text-muted">
+     updated 1 days ago
+  </div>
+</div>
