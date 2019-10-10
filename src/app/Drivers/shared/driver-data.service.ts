@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Driver } from './driver';
+import { DriverService } from './driver.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,6 @@ export class DriverDataService {
   constructor() { }
 
   changeDriver(driver: Driver, key: string) {
-    // tslint:disable-next-line: object-literal-shorthand
     this.driverSource.next({ driver: driver, key: key });
   }
 }

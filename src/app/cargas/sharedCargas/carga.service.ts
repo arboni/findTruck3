@@ -1,33 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Driver } from '../shared/driver';
+import { Carga } from '../sharedCargas/carga';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
-import { DriverDataService } from '../shared/driver-data.service';
+import { CargaDataService } from '../sharedCargas/carga-data.service';
 import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class DriverService {
+export class CargaService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  insertDriver(driver: Driver) {
-    this.db.list('driver').push(driver)
+
+  insertCarga(carga: Carga) {
+    this.db.list('carga').push(carga)
       .then((result: any) => {
         console.log(result.key);
       });
   }
 
-  updateDriver(driver: Driver, key: string) {
-    this.db.list('driver').update(key, driver)
+  updateCarga(carga: Carga, key: string) {
+    this.db.list('carga').update(key, carga)
       .catch((error: any) => {
         console.error(error);
       });
   }
 
-  getAllDrivers() {
-    return this.db.list('driver')
+  getAllCargas() {
+    return this.db.list('carga')
       .snapshotChanges().pipe(
         map(changes => {
           return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
@@ -35,11 +37,11 @@ export class DriverService {
       );
   }
 
-  delete(key: string) {
-    this.db.object(`driver/${key}`).remove();
+  deleteCarga(key: string) {
+    this.db.object(`carga/${key}`).remove();
   }
-  editDriver(key: string){
-    this.db.object(`driver/${key}`).set(Driver);
+  editCarga(key: string){
+    this.db.object(`carga/${key}`).set(Carga);
   }
 
 }

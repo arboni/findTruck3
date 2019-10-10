@@ -23,7 +23,7 @@ export class ListComponent implements OnInit {
     this.driverService.delete(key);
   }
 
-  edit(driver: Driver, key: string) {
+  editDriver(driver: Driver, key: string) {
     this.driverDataService.changeDriver(driver, key);
   }
 

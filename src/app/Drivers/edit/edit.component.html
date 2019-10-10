@@ -1,24 +1,33 @@
-<app-header></app-header>
-
+<div class=jumbotron>
+<h2 mt-5>Fomrlulário de Edição Motoristas </h2>
+<hr>
 <div class="row">
   <div class="col-lg-5 mb-3 ml-5 mt-5 mr-3">
     <form (ngSubmit)="onSubmit()">
-
       <div class="form-group">
         <label>Nome</label>
-        <input type="text" class="form-control" [(ngModel)]="driver.nome" name="nome"
-        placeholder="informe o Nome">
+        <input type="text" class="form-control" [(ngModel)]="driver.nome" name="nome" placeholder="informe o Nome">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-      </div>
 
-      <div class="form-group">
         <label>Telefone</label>
         <input type="tel" class="form-control" [(ngModel)]="driver.telefone" name="telefone"
-        placeholder="informe o telefone">
+          placeholder="informe o telefone">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+        <label>Tipo Caminhao</label>
+        <input type="text" class="form-control" [(ngModel)]="driver.tipoTruck" name="tipoTruck"
+          placeholder="informe o Tipo de caminhao(truck, baú, carreta, bi-trem, refrigerado, etc)">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+        <label>Nome</label>
+        <input type="text" class="form-control" [(ngModel)]="driver.local" name="local"
+          placeholder="informe a sua cidade">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Salvar</button>
 
-      <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
     </form>
 
   </div>
@@ -46,4 +55,6 @@
       </div>
     </div>
   </div>
+  <a routerLink="/home" class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+</div>
 </div>

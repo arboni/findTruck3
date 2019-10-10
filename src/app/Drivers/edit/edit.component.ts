@@ -12,6 +12,9 @@ export class EditComponent implements OnInit {
 
   driver: Driver;
   key: string= '';
+  tipoTruck: string = '';
+  local: string = '';
+
 
   constructor(private driverService: DriverService, private driverDataService: DriverDataService ) { }
 
@@ -22,6 +25,8 @@ export class EditComponent implements OnInit {
         this.driver = new Driver();
         this.driver.nome = data.driver.nome;
         this.driver.telefone = data.driver.telefone;
+        this.driver.tipoTruck = data.driver.tipoTruck;
+        this.driver.local = data.driver.local;
         this.key = data.key;
       }
     });

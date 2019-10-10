@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListComponent } from './list.component';
+import { ListCargasComponent } from './list-cargas.component';
 import { AppComponent} from '../../app.component';
-
 
 
 @NgModule({
   declarations: [],
   imports: [
-    ListComponent,
+    ListCargasComponent,
     CommonModule,
     AppComponent
 
   ],
 
-  exports: [ListComponent,
-  ListModule
+  exports: [ListCargasComponent,
+  ListCargasModule
   ],
 
 })
-export class ListModule { }
+export class ListCargasModule { }

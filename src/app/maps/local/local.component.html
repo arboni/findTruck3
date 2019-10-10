@@ -1,0 +1,11 @@
+<app-header></app-header>
+
+
+<div class="row mt-5">
+<div class="container">
+  <h2>Mapa de Localização</h2>
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+</div>
+</div>

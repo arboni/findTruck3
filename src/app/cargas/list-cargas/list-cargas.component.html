@@ -11,18 +11,18 @@
       <tr>
         <th scope="col">Nome</th>
         <th scope="col">Telefone</th>
-        <th scope="col">Tipo de Caminhão</th>
+        <th scope="col">Tipo de Carga</th>
         <th scope="col">Localização</th>
         <th scope="col">Editar</th>
         <th scope="col">Excluir</th>
       </tr>
     </thead>
-     <tbody  *ngFor="let driver of drivers | async">
+     <tbody  *ngFor="let carga of cargas | async">
       <tr class="table-secondary" >
-        <th>{{driver.nome}}</th>
-        <td>{{driver.telefone}}</td>
-        <td>{{driver.tipoTruck}}</td>
-        <td>{{driver.local}}</td>
+        <th>{{carga.nome}}</th>
+        <td>{{carga.telefone}}</td>
+        <td>{{carga.tipoCarga}}</td>
+        <td>{{carga.local}}</td>
         <td><button type="button" class="btn btn-default" (click)="editDriver(driver, driver.key)">Editar</button></td>
           <td><button type="button" class="btn btn-danger ml-2" (click)="delete(driver.key)">Excluir</button></td>
       </tr>
@@ -33,5 +33,6 @@
      updated 1 days ago
   </div>
 </div>
-<app-edit></app-edit>
+<app-edit-cargas></app-edit-cargas>
+
 

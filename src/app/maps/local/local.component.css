@@ -1,0 +1,11 @@
+agm-map {
+  height: 600px;
+  width: 800px;
+}
+.labelOptions {
+  color: '#ee4646';
+  font-Family: '';
+  font-Size: '10px';
+  padding:'0.5px';
+  text: 'Plan';
+}

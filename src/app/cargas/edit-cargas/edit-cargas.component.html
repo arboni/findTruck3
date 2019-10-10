@@ -1,0 +1,61 @@
+<div class=jumbotron>
+    <h2 mt-5>Fomrlulário de Edição Cargas </h2>
+    <hr>
+    <div class="row">
+      <div class="col-lg-5 mb-3 ml-5 mt-5 mr-3">
+        <form (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Empresa/Distribuidora/Pessoa Física</label>
+            <input type="text" class="form-control" [(ngModel)]="carga.nome" name="nome" placeholder="informe a empresa">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+            <label>Telefone</label>
+            <input type="tel" class="form-control" [(ngModel)]="carga.telefone" name="telefone"
+              placeholder="informe o telefone">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+            <label>Tipo de Carga</label>
+            <input type="text" class="form-control" [(ngModel)]="carga.tipoCarga" name="tipoCarga"
+              placeholder="informe o Tipo de carga(Pallet, regrigerada, avulsa, grãos, etc)">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+            <label>Local/Origem da Carga</label>
+            <input type="text" class="form-control" [(ngModel)]="carga.local" name="local"
+              placeholder="informe a cidade de origem da carga">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+
+          </div>
+        </form>
+
+      </div>
+
+      <div class="col-lg-3 mb-3 mt-5 ml-3 mr-3">
+        <p class="text-success">Se você tem uma empresa pode divulgar seu produto</p>
+        <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+          <div class="card-header">Monitoramento</div>
+          <div class="card-body">
+            <h4 class="card-title">Acompanhamento da carga</h4>
+            <p class="card-text">Você consegue acompanhar o deslocamento de sua carga durante todo o trajeto em tempo real
+              pelo mapa</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-3 mt-5 mb-3">
+        <p class="text-info">Plataforma PWA para otimizar as informações.</p>
+        <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+          <div class="card-header">Arquitetura</div>
+          <div class="card-body">
+            <h4 class="card-title">Firebase Cloud</h4>
+            <p class="card-text">Aplicação utiliza integração com banco de dados na nuvem otimizando a informação e
+              integração de dados</p>
+          </div>
+        </div>
+      </div>
+      <a routerLink="/home" class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+    </div>
+    </div>
+

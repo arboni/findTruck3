@@ -3,16 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   firebase: {
-    apiKey: "AIzaSyAOdl5W6AF76ZymVbEt8KfPJWh2L8N-9ws",
-  authDomain: "find-truck-app-1555796429024.firebaseapp.com",
-  databaseURL: "https://find-truck-app-1555796429024.firebaseio.com",
-  projectId: "find-truck-app-1555796429024",
-  storageBucket: "find-truck-app-1555796429024.appspot.com",
-  messagingSenderId: "14805171489",
-  appId: "1:14805171489:web:549d096adbeae43c"
-}
+    apiKey: "AIzaSyCT8ly-0Bf-Fez9EUsbQY1QB7pqt0fO8t8",
+    authDomain: "findtruck3.firebaseapp.com",
+    databaseURL: "https://findtruck3.firebaseio.com",
+    projectId: "findtruck3",
+    storageBucket: "findtruck3.appspot.com",
+    messagingSenderId: "293865400388",
+    appId: "1:293865400388:web:9d7fc33e0658ae08e5f411",
+    measurementId: "G-RRY7RE7X6X"
+  }
 };
 
 /*
