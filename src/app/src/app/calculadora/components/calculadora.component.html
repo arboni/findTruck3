@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="card-header">Calculadora</div>
+  <div class="card-body">
+    <div class="form-group d-flex flex-row">
+      <h6>Informe a distânica em Kilômetros</h6>
+      <input [(ngModel)]='dist' type="number" name="dist" class="form-control">
+      <h6>Informe o peso total da carga em Kilogramas</h6>
+      <input [(ngModel)]='peso' type="number" name="peso" class="form-control">
+    </div>
+    <div class="d-flex flex-row justify-content-between">
+      <h6>Tipo de Caminhão</h6>
+      <button class="btn btn-primary" (click)='truck()'>Truck</button>
+      <button class="btn btn-info" (click)='bau()'>Baú</button>
+      <button class="btn btn-warning" (click)='carreta()'>Carreta</button>
+      <button class="btn btn-success" (click)='biTrem()'>bi-Trem</button>
+    </div>
+  </div>
+  <div class="card-footer">
+    <h4>{{message}}</h4>
+  </div>
+  <div class="jumbotron">
+  <table class="table table-hover">
+      <thead>
+        <tr ([ngModel])="calculadora">
+          <th scope="col">Tipo de Caminhão</th>
+          <th scope="col">Distância</th>
+          <th scope="col">Peso da Carga</th>
+          <th scope="col">Valor Sugerido</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="table-secondary">
+          <th scope="row">{{this.tipoTruck}}</th>
+          <td>{{this.dist}}</td>
+          <td>{{this.peso}}</td>
+          <td>{{this.result}}</td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+</div>
