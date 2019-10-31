@@ -1,7 +1,8 @@
 <app-header></app-header>
 
-<div class="container">
-  <div class="card-header">Calculadora</div>
+<div class="container tex-align: center">
+    <h2>Calculadora</h2>
+  <div class="card-header text-align: center"></div>
   <div class="card-body">
     <div class="form-group d-flex flex-row">
       <h6>Informe a distânica em Kilômetros</h6>
@@ -23,7 +24,7 @@
   <div class="jumbotron">
   <table class="table table-hover">
       <thead>
-        <tr ([ngModel])="calculadora">
+        <tr ([ngModel])="tabela">
           <th scope="col">Tipo de Caminhão</th>
           <th scope="col">Distância</th>
           <th scope="col">Peso da Carga</th>
@@ -43,4 +44,5 @@
     </table>
   </div>
 </div>
+<app-footer></app-footer>
 

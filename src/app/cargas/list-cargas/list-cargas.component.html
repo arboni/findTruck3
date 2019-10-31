@@ -1,1 +1,56 @@
-<p>list-cargas works!</p>
+<!--Begin of List Component-->
+<app-header></app-header>
+<div class="container">
+<div class="card-body mt-5">
+  <h2>Algumas cargas disponíveis para transportar adicionadas recentemente.</h2>
+  </div>
+  <table class="table table-hover primary">
+    <thead>
+      <tr>
+        <th scope="rowgroup">Nome</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">Tipo de Carga</th>
+        <th scope="col">Localização</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Excluir</th>
+        <th scope="col">Aceitar TRansporte</th>
+      </tr>
+    </thead>
+     <tbody  *ngFor="let carga of cargas | async">
+      <tr class="table table-secondary" >
+        <th>{{carga.nome}}</th>
+        <td>{{carga.telefone}}</td>
+        <td>{{carga.tipoCarga}}</td>
+        <td>{{carga.local}}</td>
+        <td><button type="button" class="btn btn-primary" (click)="editCarga(carga, carga.key)">Editar Carga</button></td>
+        <td><button type="button" class="btn btn-danger" (click)="deleteCarga(carga.key)">Excluir Carga</button></td>
+        <td> <a href="/modal" class="btn btn-default btn-rounded my-3" data-toggle="modal">Aceitar Transporte</a></td>
+      </tr>
+      </tbody>
+  </table>
+  <div class="card-footer text-muted">
+     updated 1 days ago
+  </div>
+
+</div>
+
+<app-edit-cargas></app-edit-cargas>
+
+
+<link href="app/_content/modal.less" rel="stylesheet/less" type="text/css" />
+    <link href="app/_content/app.less" rel="stylesheet/less" type="text/css" />
+
+    <!-- compiling less on client side for the example only, this should be done on the server in a production app -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+
+    <!-- polyfill(s) for older browsers -->
+    <script src="https://unpkg.com/core-js/client/shim.min.js"></script>
+
+    <script src="https://unpkg.com/zone.js@0.6.23?main=browser"></script>
+    <script src="https://unpkg.com/reflect-metadata@0.1.3"></script>
+    <script src="https://unpkg.com/systemjs@0.19.27/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+        System.import('app-model').catch(function (err) { console.error(err); });
+    </script>

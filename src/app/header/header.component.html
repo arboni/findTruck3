@@ -7,22 +7,31 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a routerLink="/home" class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+        <a routerLink="/home" class="nav-link" >Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a routerLink="../calculadora" class="nav-link" href="#">Calculadora de Fretes/ANTT</a>
+        <a routerLink="/auth" class="nav-link">Authenticate</a>
       </li>
       <li class="nav-item">
-        <a routerLink="../editCargas" class="nav-link" href="#">Empresas</a>
+          <a routerLink="/listUsers" class="nav-link" >List Users</a>
+        </li>
+      <li class="nav-item">
+        <a routerLink="/calculadora" class="nav-link">Calculadora de Fretes</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/editCargas" class="nav-link">Cadastro/Empresas</a>
     </li>
     <li class="nav-item">
-      <a routerLink="../list" class="nav-link" href="#">Caminhoneiros</a>
+        <a routerLink="/edit" class="nav-link">Cadastro/Caminhoneiros</a>
     </li>
     <li class="nav-item">
-      <a routerLink="../listCargas" class="nav-link" href="#">Ofertas de Cargas</a>
+      <a routerLink="/list" class="nav-link" >Lista/Caminhoneiros</a>
     </li>
     <li class="nav-item">
-      <a routerLink="../local" class="nav-link" href="#">Localização</a>
+      <a routerLink="/listCargas" class="nav-link" >Ofertas de Cargas</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="/local" class="nav-link">Localização</a>
     </li>
   </ul>
     <form class="form-inline my-2 my-lg-0">

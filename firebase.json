@@ -3,11 +3,20 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "src",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/calculadora",
+        "destination": "./src/app/calculadora/calculadora.html"
+      }
     ]
+  },
+  "storage": {
+    "rules": "storage.rules"
   }
 }

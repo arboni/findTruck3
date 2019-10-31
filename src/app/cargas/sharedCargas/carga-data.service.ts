@@ -18,4 +18,3 @@ export class CargaDataService {
     this.cargaSource.next({ carga: carga, key: key });
   }
 }
-

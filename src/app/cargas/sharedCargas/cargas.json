@@ -1,0 +1,21 @@
+[
+  {
+      "nome": "TBT Distribuidora Agrícola ltda - Chapecó/SC",
+      "latitude": -27.125581,
+      "longitude": -52.616189,
+      "markerUrl": "/assets/images/Map/20-red-icon.svg"
+  },
+  {
+    "nome": "CBS Alimentos - Pelotas/RS",
+      "latitude": -31.7699736,
+      "longitude": -52.3410161,
+      "markerUrl": "/assets/images/Map/30-green-icon.svg"
+  },
+
+  {
+    "nome": "BAT - Santa Cruz/RS",
+      "latitude": -29.7802555,
+      "longitude": -52.404855221579865,
+      "markerUrl": "/assets/images/Map/30-yellow-icon.svg"
+  }
+]

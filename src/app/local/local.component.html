@@ -1,1 +1,66 @@
-<p>local works!</p>
+<app-header></app-header>
+
+
+<div class="row">
+  <div class="col-xs-3 mt-3 mb-3 ml-5 mr-3">
+    <agm-map [(latitude)]="location.lat" [(longitude)]="location.lng" [(zoom)]="location.zoom" [disableDefaultUI]="true"
+      [zoomControl]="true" [(fitBounds)]='location.viewport'>
+      <agm-marker [(latitude)]="location.marker.lat" [(longitude)]="location.marker.lng"
+        [markerDraggable]="location.marker.draggable" (dragEnd)='markerDragEnd($event)'>
+      </agm-marker>
+      <agm-circle [latitude]="location.lat" [longitude]="location.lng" [(radius)]="circleRadius" [fillColor]="'blue'"
+        [circleDraggable]="true" [editable]="true"></agm-circle>
+    </agm-map>
+  </div>
+
+  <div class="col-lg-3  mt-4 mb-3 ml-3 mr-3">
+    <div class="form-group">
+      <h3>Busca Endereço</h3>
+      <label class='col-sm-2'>Endereço</label>
+      <input class='col-sm-10' type='text' [(ngModel)]='location.address_level_1' class="form-control"
+        placeholder='Rua, Avenida, número'>
+      <label class='col-lg-2'>Cidade</label>
+      <input class='col-sm-10' [(ngModel)]='location.address_level_2' class='form-control' placeholder='Cidade' />
+      <label class='col-sm-2'>Estado</label>
+      <input class='col-sm-10' [(ngModel)]='location.address_state' class='form-control' placeholder='Estado'>
+      <label class='col-sm-2'>País</label>
+      <input class='col-sm-10' [(ngModel)]='location.address_country' class='form-control' placeholder='País'>
+      <label class='col-sm-2'>CEP</label>
+      <input class='col-sm-10' [(ngModel)]='location.address_zip' class='form-control' placeholder='CEP'>
+      <label class='col-sm-2'>Alcance em km</label>
+      <input type='text' class='form-control' #miles [value]='circleRadiusInMiles() | number:"0.0-2"'
+        (keyup)="milesToRadius(miles.value)" />
+    </div>
+
+    <button (click)='updateOnMap()' type="submit" class="btn btn-primary">Search</button>
+    <button (click)='clear()' type="submit" class="btn btn-secondary">Clear</button>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-3 mt-3 mb-3 ml-5 mr-3">
+    <p>Esta é a trajetória de sua carga. | <button class="btn btn-secondary">Acompanhe em tempo real</button> | </p>
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-direction [origin]="origin" [destination]="destination" [renderOptions]="renderOptions"
+        [markerOptions]="markerOptions">
+      </agm-direction>
+    </agm-map>
+    </div>
+    <div><h5>Acompanhe Em tempo real</h5></div>
+    <div class="col-lg-3  mt-3 mb-3 ml-3 mr-3">
+        <p>Caminhões em deslocamento | <button class="btn btn-secondary">Sua carga Agora</button> | </p>
+      <agm-map>
+        <agm-direction *ngFor="let dir of directions" [visible]="done" [origin]="dir.origin"
+          [destination]="dir.destination">
+        </agm-direction>
+      </agm-map>
+
+    </div>
+  </div>
+
+
+
+
+<!-- Replace the value of the key parameter with your own API key. -->
+
+<app-footer></app-footer>
