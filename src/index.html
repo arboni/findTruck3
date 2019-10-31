@@ -6,8 +6,151 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
 </head>
 <body>
-  <app-root></app-root>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">FindTruck3</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a routerLink="/home" class="nav-link" href="./app/home/home.component.html">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="../calculadora" class="nav-link" href="/src/calculadora.component.html">Calculadora de Fretes/ANTT</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="../editCargas" class="nav-link" href="#">Empresas</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="../list" class="nav-link" href="#">Caminhoneiros</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="../listCargas" class="nav-link" href="#">Ofertas de Cargas</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="../local" class="nav-link" href="#">Localização</a>
+          </li>
+        </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+
+
+ <!--Início do componente Layout-->
+<div class="row">
+    <div class="col-lg-3 mb-3 ml-3 mr-3">
+      <p class="text-warning">Aqui você pode procurar uma carga para transportar.</p>
+      <div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
+        <div class="card-header">Serviços</div>
+        <div class="card-body">
+          <h4 class="card-title">Cargas disponíveis</h4>
+          <p class="card-text">Aqui você encontra cargas disponíveis para seu caminhão. disponibilizadas em tempo real
+            para transporte</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-3 mb-3 ml-3 mr-3">
+      <p class="text-success">Se você tem uma empresa pode divulgar seu produto</p>
+      <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+        <div class="card-header">Monitoramento</div>
+        <div class="card-body">
+          <h4 class="card-title">Acompanhamento da carga</h4>
+          <p class="card-text">Você consegue acompanhar o deslocamento de sua carga durante todo o trajeto em tempo real
+            pelo mapa</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-3 mb-3">
+      <p class="text-info">Plataforma PWA para otimizar as informações.</p>
+      <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header">Arquitetura</div>
+        <div class="card-body">
+          <h4 class="card-title">Firebase Cloud</h4>
+          <p class="card-text">Aplicação utiliza integração com banco de dados na nuvem otimizando a informação e
+            integração de dados</p>
+        </div>
+      </div>
+    </div>
+    <div border:2px class="col-lg-2 mb-3 mt-2">
+      <p class="text-info">Acesso e Cadastro.</p>
+      <div class="alert alert-dismissible alert-success">
+        <strong>Aqui</strong> entre e <a routerLink="/edit" class="alert-link">Faça seu
+          Cadastro</a>, e acesso todo o conteúdo.
+      </div>
+      <div class="alert alert-dismissible alert-info">
+        <strong>Tem uma empresa?</strong> Aqui <a routerLink="edit" class="alert-link">Cadastre sua carga</a>, e otimize a
+        entrega
+        de seus produtos.
+      </div>
+    </div>
+  </div>
+  <div class="card-body mb-3 mr-3 ">
+    <h3 class="card-header">Mapas em tempo real</h3>
+    <div class="card-body">
+      <h5 class="card-title align: center">Acompanhe o deslocamento de sua carga</h5>
+
+      <div class="row align: center height: 400px width: 600px">
+        <div class="col-lg-4 mb-3">
+          <h6 class="card-subtitle text-muted">sugestão de transporte SEM GPS do caminhão</h6>
+          <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
+        </div>
+        <div class="col-lg-4 mb-3">
+          <h6 class="card-subtitle text-muted">sugestão de transporte COM GPS do caminhão</h6>
+          <agm-map [latitude]="lat1" [longitude]="lng1" [zoom]="zoom1">
+            <agm-marker [latitude]="lat1" [longitude]="lng1"></agm-marker>
+          </agm-map>
+        </div>
+        <div class="col-lg-4 mb-3">
+          <h6 class="card-subtitle text-muted">sugestão de transporte com gps do caminhão</h6>
+          <agm-map origin destination>
+            <div id="map" style="float:left;width:70%; height:100%"></div>
+            <agm-marker origin destination></agm-marker>
+            <div id="directionsPanel" style="float:right;width:30%"></div>
+          </agm-map>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <a routerLink="/edit" class="card-link">Cadastre-se para acesso</a>
+      <a href="#" class="card-link">Já tenho cadastro</a>
+    </div>
+  </div>
+<!--End of Layout Component-->
+<!--Start of Footer Component-->
+<div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100"
+      aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+  </div>
+  <div class="alert alert-dismissible alert-danger">
+    <h4 class="alert-heading">Atenção</h4>
+    <p class="mb-0">Esta aplicação não se responsabiliza por pagamentos entre as partes. apenas divulgamos cargas e
+      caminhoneiros disponíveis. Veja as <a href="#" class="alert-link">Política de Segurança da aplicação</a>.</p>
+  </div>
+<!--End of Footer Component-->
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!-- update the version number as needed -->
+<script defer="" src="/__/firebase/7.2.1/firebase-app.js"></script>
+<!-- include only the Firebase features as you need -->
+<script defer="" src="/__/firebase/7.2.1/firebase-auth.js"></script>
+<script defer="" src="/__/firebase/7.2.1/firebase-database.js"></script>
+<script defer="" src="/__/firebase/7.2.1/firebase-messaging.js"></script>
+<script defer="" src="/__/firebase/7.2.1/firebase-storage.js"></script>
+<!-- initialize the SDK after all desired features are loaded -->
+<script defer="" src="/__/firebase/init.js"></script>
 </body>
 </html>
