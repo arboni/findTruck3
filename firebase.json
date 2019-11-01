@@ -3,7 +3,63 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "dist",
+    "redirects": [ {
+      "source" : "/src/app/auth",
+      "destination" : "/auth",
+      "type" : 301
+    },
+    {
+      "source" : "/src/app/home",
+      "destination" : "/home",
+      "type" : 301
+    },
+    {
+      "source" : "/src/app/Drivers/list",
+      "destination" : "/list",
+      "type" : 301
+    },
+    {
+      "source" : "/src/app/Drivers/edit",
+      "destination" : "/edit",
+      "type" : 301
+    },
+    {
+      "source" : "/src/app/calculadora/components",
+      "destination" : "/calculadora",
+      "type" : 301
+    },
+    {
+      "source" : "/src/app/cargas/list-cargas",
+      "destination" : "/listCargas",
+      "type" : 301
+    },
+    {
+      "source" : "/src/app/cargas/edit-cargas",
+      "destination" : "/editCargas",
+      "type" : 301
+    },
+    {
+      "source" : "/src/app/local",
+      "destination" : "/local",
+      "type" : 301
+    },
+    {
+      "source" : "/src/app/login",
+      "destination" : "/login",
+      "type" : 301
+    },
+    {
+      "source" : "/src/app/login",
+      "destination" : "/",
+      "type" : 301
+    },
+
+    {
+      "source" : "/firebase/*",
+      "destination" : "https://firebase.google.com",
+      "type" : 302
+    } ],
+    "public": "dist/",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -11,8 +67,8 @@
     ],
     "rewrites": [
       {
-        "source": "/calculadora",
-        "destination": "./src/app/calculadora/calculadora.html"
+        "source": "dist/src/app/calculadora/components/",
+        "destination": "/calculadora"
       }
     ]
   },

@@ -1,98 +1,54 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
-import { throwError, Subject } from 'rxjs';
+import { Injectable, NgZone } from '@angular/core';
+import { auth } from 'firebase/app';
+import { User } from './user';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
-import { User } from './user.model';
+@Injectable({
+    providedIn: 'root'
+})
 
-export interface AuthResponseData {
-  kind: string;
-  idToken: string;
-  email: string;
-  refreshToken: string;
-  expiresIn: string;
-  localId: string;
-  registered?: boolean;
-}
-
-@Injectable({ providedIn: 'root' })
 export class AuthService {
-  user = new Subject<User>();
+    user: User;
 
-  constructor(private http: HttpClient) {}
-
-  signup(email: string, password: string) {
-    return this.http
-      .post<AuthResponseData>(
-        'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyCT8ly-0Bf-Fez9EUsbQY1QB7pqt0fO8t8',
-        {
-          email: email,
-          password: password,
-          returnSecureToken: true
-        }
-      )
-      .pipe(
-        catchError(this.handleError),
-        tap(resData => {
-          this.handleAuthentication(
-            resData.email,
-            resData.localId,
-            resData.idToken,
-            +resData.expiresIn
-          );
-        })
-      );
-  }
-
-  login(email: string, password: string) {
-    return this.http
-      .post<AuthResponseData>(
-        'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyCT8ly-0Bf-Fez9EUsbQY1QB7pqt0fO8t8',
-        {
-          email: email,
-          password: password,
-          returnSecureToken: true
-        }
-      )
-      .pipe(
-        catchError(this.handleError),
-        tap(resData => {
-          this.handleAuthentication(
-            resData.email,
-            resData.localId,
-            resData.idToken,
-            +resData.expiresIn
-          );
-        })
-      );
-  }
-  private handleAuthentication(
-    email: string,
-    userId: string,
-    token: string,
-    expiresIn: number
-  ) {
-    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-    const user = new User(email, userId, token, expirationDate);
-    this.user.next(user);
-  }
-
-  private handleError(errorRes: HttpErrorResponse) {
-    let errorMessage = 'An unknown error occurred!';
-    if (!errorRes.error || !errorRes.error.error) {
-      return throwError(errorMessage);
+    constructor(
+        public router: Router,
+        public ngZone: NgZone,
+        public afAuth: AngularFireAuth,
+        private angularFireAuth: AngularFireAuth
+    ) {
+        this.afAuth.authState.subscribe(user => {
+            this.user = user;
+        });
     }
-    switch (errorRes.error.error.message) {
-      case 'EMAIL_EXISTS':
-        errorMessage = 'This email exists already';
-        break;
-      case 'EMAIL_NOT_FOUND':
-        errorMessage = 'This email does not exist.';
-        break;
-      case 'INVALID_PASSWORD':
-        errorMessage = 'This password is not correct.';
-        break;
+
+    // Firebase SignInWithPopup
+    async OAuthProvider(provider) {
+        try {
+        const res = await this.afAuth.auth.signInWithPopup(provider);
+        this.ngZone.run(() => {
+          this.router.navigate(['home']);
+        });
+      } catch (error) {
+        window.alert(error);
+      }
     }
-    return throwError(errorMessage);
-  }
+
+    // Firebase Google Sign-in
+    SigninWithGoogle() {
+        return this.OAuthProvider(new auth.GoogleAuthProvider())
+            .then(res => {
+                console.log('Successfully logged in!');
+            }).catch(error => {
+                console.log(error);
+            });
+    }
+
+    // Firebase Logout
+    SignOut() {
+        return this.afAuth.auth.signOut().then(() => {
+            this.router.navigate(['login']);
+        });
+    }
+
 }

@@ -36,6 +36,18 @@ interface Location {
 })
 
 export class LocalComponent implements OnInit {
+;
+
+  constructor(public mapsApiLoader: MapsAPILoader,
+    private zone: NgZone,
+    private wrapper: GoogleMapsAPIWrapper) {
+    this.mapsApiLoader = mapsApiLoader;
+    this.zone = zone;
+    this.wrapper = wrapper;
+    this.mapsApiLoader.load().then(() => {
+      this.geocoder = new google.maps.Geocoder();
+    });
+  }
   idKey: 'Carga1';
   coords: 'location';
   circleRadius: number = 5000; // km
@@ -79,6 +91,10 @@ export class LocalComponent implements OnInit {
     },
   }
 
+  //início teste múltiplos marcadores
+  public directions: any = [];
+  public done = false;
+
   clear() {
     this.location = {
       lat: -30.03556336, lng: -51.22649474,
@@ -97,26 +113,10 @@ export class LocalComponent implements OnInit {
 
 
   // tslint:disable-next-line: no-unused-expression
-  ViewChild(AgmMap) { AgmMap };
-
-  constructor(public mapsApiLoader: MapsAPILoader,
-    private zone: NgZone,
-    private wrapper: GoogleMapsAPIWrapper) {
-    this.mapsApiLoader = mapsApiLoader;
-    this.zone = zone;
-    this.wrapper = wrapper;
-    this.mapsApiLoader.load().then(() => {
-      this.geocoder = new google.maps.Geocoder();
-    });
-  }
-
-  //início teste múltiplos marcadores
-  public directions: any = [];
-  public done = false;
-
+  ViewChild(AgmMap) { AgmMap }
   ngOnInit() {
-    //this.location.marker.draggable = true;
-    //this.getDirection();
+    this.location.marker.draggable = true;
+    this.getDirection();
 
     const dynamic = [{
       origin: { lat: Number(-32.04122222791505), lng: Number(-52.076997756958015) },
@@ -145,13 +145,13 @@ export class LocalComponent implements OnInit {
     ];
 
     this.directions = dynamic;
-    setTimeout(() => { this.done = true; }, 4400);
+    setTimeout(() => { this.done = true; }, 500);
 
   }//fim teste múltiplos marcadores
 
 
   //Início form pesquisa endereço
-  findLocation(address) {
+  findLocation(address: string) {
     if (!this.geocoder) this.geocoder = new google.maps.Geocoder()
     this.geocoder.geocode({
       'address': address

@@ -9,11 +9,12 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmDirectionModule } from 'agm-direction';
-
-
-
-
 import { AppRoutingModule } from './app-routing.module';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+
+//Components import
 import { AppComponent } from './app.component';
 import { ListComponent } from './Drivers/list/list.component';
 import { EditComponent } from './Drivers/edit/edit.component';
@@ -26,12 +27,11 @@ import { EditCargasComponent } from './cargas/edit-cargas/edit-cargas.component'
 import { ListCargasComponent } from './cargas/list-cargas/list-cargas.component';
 import { CalculadoraComponent } from './calculadora/components/calculadora.component';
 import { ModalComponent } from './modal/modal.component';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './auth/loading-spinner/loading-spinner.component';
-import { EditUsersComponent } from './users/edit-users/edit-users.component';
-import { ListUsersComponent } from './users/list-users/list-users.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth/auth.service';
+
 
 
 
@@ -52,8 +52,8 @@ import { ListUsersComponent } from './users/list-users/list-users.component';
     ModalComponent,
     AuthComponent,
     LoadingSpinnerComponent,
-    EditUsersComponent,
-    ListUsersComponent,
+    LoginComponent
+
   ],
 
   imports: [
@@ -75,11 +75,12 @@ import { ListUsersComponent } from './users/list-users/list-users.component';
 
   ],
   providers: [LocalComponent,
+    AuthService,
     ListComponent,
     ListCargasComponent,
     CalculadoraComponent,
     GoogleMapsAPIWrapper,
-    EditUsersComponent],
+  ],
   bootstrap: [AppComponent],
 
 })
