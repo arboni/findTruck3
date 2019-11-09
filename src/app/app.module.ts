@@ -12,6 +12,9 @@ import { AgmDirectionModule } from 'agm-direction';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RequestCache } from './cache/request-cache.service';
+import { CachingInterceptor } from './cache/caching-interceptor.service';
 
 
 //Components import
@@ -26,11 +29,13 @@ import { LocalComponent } from './local/local.component';
 import { EditCargasComponent } from './cargas/edit-cargas/edit-cargas.component';
 import { ListCargasComponent } from './cargas/list-cargas/list-cargas.component';
 import { CalculadoraComponent } from './calculadora/components/calculadora.component';
-import { ModalComponent } from './modal/modal.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './auth/loading-spinner/loading-spinner.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth/auth.service';
+import { AceiteTransporteComponent } from './aceite-transporte/aceite-transporte.component';
+import { ListUsersComponent } from './users/list-users/list-users.component';
+import { EditUsersComponent} from './users/edit-users/edit-users.component';
 
 
 
@@ -49,10 +54,12 @@ import { AuthService } from './auth/auth.service';
     EditCargasComponent,
     ListCargasComponent,
     CalculadoraComponent,
-    ModalComponent,
     AuthComponent,
     LoadingSpinnerComponent,
-    LoginComponent
+    LoginComponent,
+    AceiteTransporteComponent,
+    ListUsersComponent,
+    EditUsersComponent,
 
   ],
 
@@ -80,6 +87,7 @@ import { AuthService } from './auth/auth.service';
     ListCargasComponent,
     CalculadoraComponent,
     GoogleMapsAPIWrapper,
+    { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
 

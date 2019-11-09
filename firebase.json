@@ -3,74 +3,20 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "redirects": [ {
-      "source" : "/src/app/auth",
-      "destination" : "/auth",
-      "type" : 301
-    },
-    {
-      "source" : "/src/app/home",
-      "destination" : "/home",
-      "type" : 301
-    },
-    {
-      "source" : "/src/app/Drivers/list",
-      "destination" : "/list",
-      "type" : 301
-    },
-    {
-      "source" : "/src/app/Drivers/edit",
-      "destination" : "/edit",
-      "type" : 301
-    },
-    {
-      "source" : "/src/app/calculadora/components",
-      "destination" : "/calculadora",
-      "type" : 301
-    },
-    {
-      "source" : "/src/app/cargas/list-cargas",
-      "destination" : "/listCargas",
-      "type" : 301
-    },
-    {
-      "source" : "/src/app/cargas/edit-cargas",
-      "destination" : "/editCargas",
-      "type" : 301
-    },
-    {
-      "source" : "/src/app/local",
-      "destination" : "/local",
-      "type" : 301
-    },
-    {
-      "source" : "/src/app/login",
-      "destination" : "/login",
-      "type" : 301
-    },
-    {
-      "source" : "/src/app/login",
-      "destination" : "/",
-      "type" : 301
-    },
-
-    {
-      "source" : "/firebase/*",
-      "destination" : "https://firebase.google.com",
-      "type" : 302
-    } ],
-    "public": "dist/",
+    "public": "dist/findtruck3",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
-      {
-        "source": "dist/src/app/calculadora/components/",
-        "destination": "/calculadora"
-      }
-    ]
+    "rewrites": [{
+      "source": "/dist/**",
+      "destination": "/dist.html"
+    },
+    {
+      "source": "**",
+      "destination": "/index.html"
+    }]
   },
   "storage": {
     "rules": "storage.rules"

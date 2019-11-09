@@ -11,7 +11,6 @@ import { ListCargasComponent } from './cargas/list-cargas/list-cargas.component'
 import { EditCargasComponent } from './cargas/edit-cargas/edit-cargas.component';
 import { CalculadoraComponent } from './calculadora/components/calculadora.component';
 import { GoogleMapsAPIWrapper} from '@agm/core';
-import { ModalComponent } from './modal/modal.component';
 import { DriverService } from './Drivers/shared/driver.service';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './login/login.component';
@@ -26,9 +25,6 @@ const routes: Routes = [
   { path: 'editCargas', component: EditCargasComponent},
   { path: 'listCargas', component: ListCargasComponent},
   { path: 'calculadora', component: CalculadoraComponent},
-  { path: 'modal', component: ModalComponent},
-
-
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

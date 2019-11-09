@@ -5,8 +5,7 @@
   <div class="col-xs-3 mt-3 mb-3 ml-5 mr-3">
     <agm-map [(latitude)]="location.lat" [(longitude)]="location.lng" [(zoom)]="location.zoom" [disableDefaultUI]="true"
       [zoomControl]="true" [(fitBounds)]='location.viewport'>
-      <agm-marker [(latitude)]="location.marker.lat" [(longitude)]="location.marker.lng"
-        [markerDraggable]="location.marker.draggable" (dragEnd)='markerDragEnd($event)'>
+      <agm-marker [(latitude)]="location.marker.lat" [(longitude)]="location.marker.lng">
       </agm-marker>
       <agm-circle [latitude]="location.lat" [longitude]="location.lng" [(radius)]="circleRadius" [fillColor]="'blue'"
         [circleDraggable]="true" [editable]="true"></agm-circle>
@@ -40,13 +39,12 @@
 <div class="row">
     <div class="col-xs-3 mt-3 mb-3 ml-5 mr-3">
     <p>Esta é a trajetória de sua carga. | <button class="btn btn-secondary">Acompanhe em tempo real</button> | </p>
-    <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-map [latitude]="origin" [longitude]="destination">
       <agm-direction [origin]="origin" [destination]="destination" [renderOptions]="renderOptions"
         [markerOptions]="markerOptions">
       </agm-direction>
     </agm-map>
     </div>
-    <div><h5>Acompanhe Em tempo real</h5></div>
     <div class="col-lg-3  mt-3 mb-3 ml-3 mr-3">
         <p>Caminhões em deslocamento | <button class="btn btn-secondary">Sua carga Agora</button> | </p>
       <agm-map>

@@ -21,8 +21,11 @@ export class AppComponent {
 
   constructor() { }
 
+  // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
     this.bodyText = 'Caminhoneiro Aceitou o transporte';
+    window.addEventListener('online', this.onNetworkStatusChange.bind(this));
+    window.addEventListener('offline', this.onNetworkStatusChange.bind(this));
 
   }
   viewTransport(latDriver, lngDriver) {
@@ -32,8 +35,14 @@ export class AppComponent {
       // tslint:disable-next-line: no-unused-expression
       // tslint:disable-next-line: align
       + latDriver + ' latitude  e ' +
-        + lngDriver +  ' longitude ';
+      + lngDriver + ' longitude ';
 
+  }
+  offline: boolean;
+
+  onNetworkStatusChange() {
+    this.offline = !navigator.onLine;
+    console.log('offline ' + this.offline);
   }
 
 
