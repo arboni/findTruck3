@@ -1,13 +1,23 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="#">FindTruck3</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="navbar"
+    aria-controls="navbar nav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <div class="navbar-toggler" id="navbar">
+      <ul class="navbar nav bg-secondary">
+          <li><a class="nav-link" routerLink="/home">Home</a></li>
+          <li><a class="nav-link" routerLink="/calculadora">Calculadora</a></li>
+          <li><a class="nav-link" routerLink="/list">Caminhões</a></li>
+          <li><a class="nav-link" routerLink="/listCargas">Cargas</a></li>
+          <li><a class="nav-link" routerLink="/aceite">Acompanhamento</a></li>
+      </ul>
+  </div>
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a routerLink="/home" class="nav-link" >Home<span class="sr-only">(current)</span></a>
+        <a routerLink="/home" class="nav-link">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a routerLink="/login" class="nav-link">login</a>
@@ -17,26 +27,24 @@
       </li>
       <li class="nav-item">
         <a routerLink="/editCargas" class="nav-link">Cadastro/Empresas</a>
-    </li>
-    <li class="nav-item">
+      </li>
+      <li class="nav-item">
         <a routerLink="/edit" class="nav-link">Cadastro/Caminhoneiros</a>
-    </li>
-    <li class="nav-item">
-      <a routerLink="/list" class="nav-link" >Lista/Caminhoneiros</a>
-    </li>
-    <li class="nav-item">
-      <a routerLink="/listCargas" class="nav-link" >Ofertas de Cargas</a>
-    </li>
-    <li class="nav-item">
-      <a routerLink="/local" class="nav-link">Localização</a>
-    </li>
-  </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/list" class="nav-link">Lista/Caminhoneiros</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/listCargas" class="nav-link">Ofertas de Cargas</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/local" class="nav-link">Localização</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/aceite" class="nav-link">Acompanhamento</a>
+      </li>
+    </ul>
+
   </div>
 </nav>
-
-
 

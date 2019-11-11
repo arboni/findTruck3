@@ -14,6 +14,7 @@ import { GoogleMapsAPIWrapper} from '@agm/core';
 import { DriverService } from './Drivers/shared/driver.service';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './login/login.component';
+import { AceiteTransporteComponent } from './aceite-transporte/aceite-transporte.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'editCargas', component: EditCargasComponent},
   { path: 'listCargas', component: ListCargasComponent},
   { path: 'calculadora', component: CalculadoraComponent},
+  { path: 'aceite', component: AceiteTransporteComponent},
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

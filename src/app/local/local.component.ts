@@ -39,8 +39,8 @@ export class LocalComponent implements OnInit {
 ;
 
   constructor(public mapsApiLoader: MapsAPILoader,
-    private zone: NgZone,
-    private wrapper: GoogleMapsAPIWrapper) {
+              private zone: NgZone,
+              private wrapper: GoogleMapsAPIWrapper) {
     this.mapsApiLoader = mapsApiLoader;
     this.zone = zone;
     this.wrapper = wrapper;
