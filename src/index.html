@@ -9,13 +9,21 @@
   <link rel="stylesheet" href="styles.css" type="text/css">
   <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyDRfu2LrQ5yw2LXIJY-mL969uymzgTHQvI"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#025c75">
   <meta name="theme-color" content="#1976d2">
   <base href="/">
 </head>
 
 <body>
   <app-root></app-root>
+  <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker
+                 .register('/sw.js')
+                 .then(function() { console.log("Service Worker Registered"); });
+      }
+      </script>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <!-- update the version number as needed -->

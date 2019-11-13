@@ -15,6 +15,7 @@ import { DriverService } from './Drivers/shared/driver.service';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './login/login.component';
 import { AceiteTransporteComponent } from './aceite-transporte/aceite-transporte.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'listCargas', component: ListCargasComponent},
   { path: 'calculadora', component: CalculadoraComponent},
   { path: 'aceite', component: AceiteTransporteComponent},
+  { path: 'chat', component: ChatComponent},
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

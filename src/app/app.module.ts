@@ -15,6 +15,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestCache } from './cache/request-cache.service';
 import { CachingInterceptor } from './cache/caching-interceptor.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 
@@ -37,6 +38,7 @@ import { AuthService } from './auth/auth.service';
 import { AceiteTransporteComponent } from './aceite-transporte/aceite-transporte.component';
 import { ListUsersComponent } from './users/list-users/list-users.component';
 import { EditUsersComponent} from './users/edit-users/edit-users.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -61,6 +63,7 @@ import { EditUsersComponent} from './users/edit-users/edit-users.component';
     AceiteTransporteComponent,
     ListUsersComponent,
     EditUsersComponent,
+    ChatComponent,
 
 
 
@@ -76,7 +79,7 @@ import { EditUsersComponent} from './users/edit-users/edit-users.component';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     ReactiveFormsModule,
-
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCYqiJwwltQZk70bd7b13OaeV5vAAelRLw'
     }),

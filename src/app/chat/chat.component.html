@@ -1,0 +1,21 @@
+<app-header></app-header>
+
+<div class="row ml-4 mt-4">
+    <div class=" chatPanel ">
+  <h2>FindTruck3 - chat</h2>
+  <div class="chatPanel" *ngFor="let message of messages | async">
+    {{message.value}}>
+    <label for="message">{{message}}</label>
+  </div>
+  <div class="chatButton">
+    <input class="message" type="text" #message placeholder="Your message..">
+    <button (click)="newMessage(message.$value)">Enviar</button>
+</div>
+
+<div class="mensagens">
+  <h2>Mensagens do chat</h2>
+  <div class="card-footer">
+      <h4>{{message.value}}</h4>
+    </div>
+</div>
+</div>

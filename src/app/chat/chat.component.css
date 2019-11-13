@@ -1,0 +1,51 @@
+h2{
+  color: darkkhaki;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+h4{
+  color: aquamarine;
+  text-align: right;
+}
+
+.message{
+min-width: 300px;
+margin-left: 2px;
+}
+.chatButton{
+  align-content: right;
+}
+
+.chatPanel{
+  background-color: rgb(32, 53, 16);
+  border-radius: 3ch;
+  min-width: 350px;
+  min-height: 350px;
+  position: relative;
+  margin-top: 5px;
+  margin-left: 20em;
+  text-indent: inherit;
+
+}
+
+.mensagens{
+  position: relative;
+  margin-right: 5px;
+  background-color: rgb(34, 60, 75);
+  align-content: center;
+  min-width: 600px;
+  min-height: 600px;
+  max-height: 600px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-left: 10em;
+  border-radius: 3ch;
+  max-inline-size: 300px;
+
+}
+.chatTextArea{
+  min-width: 400px;
+  background-color: bisque;
+  align-content: baseline;
+  margin-block-end: auto;
+}
