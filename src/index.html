@@ -5,25 +5,28 @@
   <meta charset="utf-8">
   <title>FindTruck3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="styles.css" type="text/css">
-  <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyDRfu2LrQ5yw2LXIJY-mL969uymzgTHQvI"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#025c75">
-  <meta name="theme-color" content="#1976d2">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+
   <base href="/">
 </head>
 
 <body>
   <app-root></app-root>
-  <script>
-      if('serviceWorker' in navigator) {
-        navigator.serviceWorker
-                 .register('/sw.js')
-                 .then(function() { console.log("Service Worker Registered"); });
-      }
-      </script>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <!-- update the version number as needed -->
@@ -35,6 +38,93 @@
   <script defer="" src="/__/firebase/7.2.1/firebase-storage.js"></script>
   <!-- initialize the SDK after all desired features are loaded -->
   <script defer="" src="/__/firebase/init.js"></script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/5dd2ef31d96992700fc80bb8/default';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->
+
+
 </body>
+
+<script>
+    document.write("")
+    </script>
+    <noscript>Desculpe, mas seu navegador não suporta JavaScript!
+    <p>Tente acessar a página do aplicativo com outro navegador</p></noscript>
+
+
+<script>
+  // This is the service worker with the Cache-first network
+
+// Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
+
+// Check compatibility for the browser we're running this in
+if ("serviceWorker" in navigator) {
+  if (navigator.serviceWorker.controller) {
+    console.log("[PWA Builder] active service worker found, no need to register");
+  } else {
+    // Register the service worker
+    navigator.serviceWorker
+      .register("pwabuilder-sw.js", {
+        scope: "./"
+      })
+      .then(function (reg) {
+        console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+}
+
+</script>
+<script>
+    self.addEventListener('install', function(event) {
+      var indexPage = new Request('index.html');
+      event.waitUntil(
+        fetch(indexPage).then(function(response) {
+          return caches.open('pwabuilder-offline').then(function(cache) {
+            console.log('[PWA Builder] Cached index page during Install'+ response.url);
+            return cache.put(indexPage, response);
+          });
+      }));
+    });
+
+    //If any fetch fails, it will look for the request in the cache and serve it from there first
+    self.addEventListener('fetch', function(event) {
+      var updateCache = function(request){
+        return caches.open('pwabuilder-offline').then(function (cache) {
+          return fetch(request).then(function (response) {
+            console.log('[PWA Builder] add page to offline'+response.url)
+            return cache.put(request, response);
+          });
+        });
+      };
+
+      event.waitUntil(updateCache(event.request));
+
+      event.respondWith(
+        fetch(event.request).catch(function(error) {
+          console.log( '[PWA Builder] Network request Failed. Serving content from cache: ' + error );
+
+          //Check to see if you have it in the cache
+          //Return response
+          //If not in the cache, then return error page
+          return caches.open('pwabuilder-offline').then(function (cache) {
+            return cache.match(event.request).then(function (matching) {
+              var report =  !matching || matching.status == 404?Promise.reject('no-match'): matching;
+              return report
+            });
+          });
+        })
+      );
+    })
+</script>
 
 </html>

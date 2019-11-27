@@ -1,7 +1,8 @@
 export class User {
-  nome: string = '';
-  email: string = '';
-  password: string = '';
+  nome = '';
+  email = '';
+  password = '';
+  tipoUser: string = '';
   id: string;
 
 }

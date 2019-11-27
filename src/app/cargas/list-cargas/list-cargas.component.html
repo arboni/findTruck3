@@ -36,40 +36,24 @@
 </div>
 
 <div class="row ml-4">
-<ng-template #mymodal let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Confirmo o Transporte</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    Estou ciente de que a negociação acontecerá entre as partes envolvidas.
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Confirma</button>
-  </div>
-</ng-template>
+  <ng-template #mymodal let-modal>
+    <div class="modal-fade">
+      <h4 class="modal-title" id="modal-basic-title">Confirmo o Transporte</h4>
+    </div>
+    <div class="modal-body">
+      Estou ciente de que a negociação acontecerá entre as partes envolvidas.
+    </div>
+    <div class="modal-footer justify-content-center">
+      <button type="button" class="btn btn-primary btn-md" (click)="modal.close('Save click')">Aceito o Transporte<i
+          class="fas fa-map-marker-alt ml-1"></i></button>
+      <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="modal.close()">Cancelar<i
+          class="fas fa-times ml-1"></i></button>
+    </div>
+  </ng-template>
 </div>
 
 
 
-
-  <!--Footer
-  <div class="modal-footer justify-content-center">
-
-    <button type="button" class="btn btn-primary btn-md">Save location <i class="fas fa-map-marker-alt ml-1"></i></button>
-    <button type="button" class="btn btn-outline-primary btn-md" data-dismiss="modal">Close <i class="fas fa-times ml-1"></i></button>
-
-  </div>
--->
-
-<!--/.Content-->
-
-
-
-
-<!--Modal: Name-->
 
 
 

@@ -13,6 +13,7 @@ export class EditUsersComponent implements OnInit {
   user: User;
   key: string= '';
   email: string = '';
+  tipoUser: string = '';
   password: string = '';
   id: string;
 
@@ -28,6 +29,7 @@ export class EditUsersComponent implements OnInit {
         this.user.email = data.user.email;
         this.user.password = data.user.password;
         this.user.id = data.user.id;
+        this.user.tipoUser = data.user.tipoUser;
         this.key = data.key;
       }
     });

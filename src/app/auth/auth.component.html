@@ -1,38 +1,39 @@
-<app-header></app-header>
 
-<div class="jumbotron-full">
 
-  <div class="container">
-    <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <div class="alert alert-danger" *ngIf="SigninWithGoogle()">
-        <p>{{ this.res }}</p>
+<div class="container">
+    <div class="title">
+        <div class="logo-image" border-radius="20px">
+            <img src="/assets/icons/favicon-32x32.png"border-radius="20px" width="50" height="50" alt="">
       </div>
-      <div *ngIf="isLoginMode" style="text-align: center;">
-        <app-loading-spinner></app-loading-spinner>
+        <h2>Login FindTruck3</h2>
+        <span>Entre com sua conta gmail, Outlook ou email válido</span>
       </div>
-      <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoginMode">
-        <div class="form-group">
-          <label for="email">E-Mail</label>
-          <input type="email" id="email" class="form-control" ngModel name="email" required email />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" class="form-control" ngModel name="password" required length="6" />
-        </div>
-        <div>
-          <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">
-            {{ isLoginMode ? 'Login' : 'Sign Up' }}
-          </button>
-          |
-          <button class="btn btn-primary" (click)="onSwitchMode()" type="button">
-            Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }}
-          </button>
-        </div>
-      </form>
-    </div>
+  <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <h1 *ngIf="authService && authService.userData | async">Hello {{ (authService.userData | async)?.email }}</h1>
+  <div *ngIf="!(authService.userData | async)"><!--<app-loading-spinner></app-loading-spinner>-->
+  <div class="form-group">
+  <label for="email">Email address:</label>
+  <input type="text" class="form-control" [(ngModel)]="email" placeholder="email">
   </div>
+  <div class="form-group">
+  <label for="pwd">Password:</label>
+  <input type="password" class="form-control" [(ngModel)]="password" id="pwd" placeholder="password">
+  </div>
+  <button (click)="signUp()" class="btn btn-default">Sign Up</button>
+  <button (click)="signIn()" class="btn btn-default" style="margin-left:5px;">Login</button>
 
 
-
+  </div>
+  <button (click)="signOut()" class="btn btn-primary" *ngIf="authService.userData | async">Logout</button>
+  </div>
+  </div>
+  <br>
+  <hr>
+<div class="card-header align:center">
+  <button><a routerLink="/home" class="nav-link">Home</a></button>
 </div>
+
 <app-footer></app-footer>
+
+

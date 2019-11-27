@@ -13,22 +13,27 @@ import { CalculadoraComponent } from './calculadora/components/calculadora.compo
 import { GoogleMapsAPIWrapper} from '@agm/core';
 import { DriverService } from './Drivers/shared/driver.service';
 import { AuthComponent } from './auth/auth.component';
-import { LoginComponent } from './login/login.component';
 import { AceiteTransporteComponent } from './aceite-transporte/aceite-transporte.component';
 import { ChatComponent } from './chat/chat.component';
+import { AuthGuard } from './shared/guard/auth.guard';
+import { EditUsersComponent } from './users/edit-users/edit-users.component';
+import { ListUsersComponent } from './users/list-users/list-users.component';
+
+
+
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
-  { path: 'login', component: LoginComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'auth' },
   { path: 'home', component: HomeComponent},
-  { path: 'list', component: ListComponent},
-  { path: 'edit', component: EditComponent},
-  { path: 'local', component: LocalComponent},
-  { path: 'editCargas', component: EditCargasComponent},
-  { path: 'listCargas', component: ListCargasComponent},
-  { path: 'calculadora', component: CalculadoraComponent},
-  { path: 'aceite', component: AceiteTransporteComponent},
-  { path: 'chat', component: ChatComponent},
+  { path: 'auth', component: AuthComponent},
+  { path: 'list', component: ListComponent, canActivate:[AuthGuard]},
+  { path: 'edit', component: EditComponent, canActivate:[AuthGuard]},
+  { path: 'local', component: LocalComponent, canActivate:[AuthGuard]},
+  { path: 'editCargas', component: EditCargasComponent,canActivate:[AuthGuard]},
+  { path: 'listCargas', component: ListCargasComponent,canActivate:[AuthGuard]},
+  { path: 'calculadora', component: CalculadoraComponent, canActivate:[AuthGuard]},
+  { path: 'aceite', component: AceiteTransporteComponent, canActivate:[AuthGuard]},
+  { path: 'chat', component: ChatComponent, canActivate:[AuthGuard]},
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

@@ -38,7 +38,7 @@
 
 <div class="row">
     <div class="col-xs-3 mt-3 mb-3 ml-5 mr-3">
-    <p>Esta é a trajetória de sua carga. | <button class="btn btn-secondary">Acompanhe em tempo real</button> | </p>
+        <button><a routerLink="/aceite" class="nav-link">Acompanhe sua carga sem GPS</a></button>
     <agm-map [latitude]="origin" [longitude]="destination">
       <agm-direction [origin]="origin" [destination]="destination" [renderOptions]="renderOptions"
         [markerOptions]="markerOptions">
@@ -46,7 +46,7 @@
     </agm-map>
     </div>
     <div class="col-lg-3  mt-3 mb-3 ml-3 mr-3">
-        <p>Caminhões em deslocamento | <button class="btn btn-secondary">Sua carga Agora</button> | </p>
+       <button><a routerLink="/aceite" class="nav-link">Acompanhe sua carga com GPS</a></button>
       <agm-map>
         <agm-direction *ngFor="let dir of directions" [visible]="done" [origin]="dir.origin"
           [destination]="dir.destination">

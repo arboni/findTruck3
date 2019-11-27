@@ -1,5 +1,5 @@
   {
-    "index": "/index.html",
+    "index": "/src/app",
     "assetGroups": [{
       "name": "findtruck3",
       "installMode": "prefetch",

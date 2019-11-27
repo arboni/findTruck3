@@ -93,6 +93,7 @@ export class CalculadoraComponent {
       this.message = 'Para um caminhão Baú o valor sugerido para a distância de ' + this.dist +
        'KM carregando ' + this.peso + 'KG  é: ' + this.result.toFixed(2);
     } else if (this.calcIncrement > 1 && this.calcIncrement <= 9) {
+      this.calcPeso = (25.64 * this.incrementPeso);
       this.increment = (98.10 * this.calcIncrement);
       this.result = this.increment + this.calcPeso;
       this.result.toFixed(2);
@@ -101,6 +102,7 @@ export class CalculadoraComponent {
       this.message = 'Para um caminhão Baú o valor sugerido para a distância de ' + this.dist +
        'KM carregando ' + this.peso + 'KG  é: ' + this.result.toFixed(2);
     } else if (this.calcIncrement >= 9 && this.calcIncrement <= 38) {
+      this.calcPeso = (25.64 * this.incrementPeso);
       this.increment = (196.20 * this.calcIncrement);
       this.result = this.increment + this.calcPeso;
       this.result.toFixed(2);
@@ -109,6 +111,7 @@ export class CalculadoraComponent {
       this.message = 'Para um caminhão Baú o valor sugerido para a distância de ' + this.dist +
        'KM carregando ' + this.peso + 'KG  é: ' + this.result.toFixed(2);
     } else if (this.calcIncrement > 38 && this.calcIncrement <= 52) {
+      this.calcPeso = (25.64 * this.incrementPeso);
       this.increment = (392.40 * this.calcIncrement);
       this.result = this.increment + this.calcPeso;
       this.result.toFixed(2);
@@ -119,6 +122,7 @@ export class CalculadoraComponent {
     } else {
       // tslint:disable-next-line: no-unused-expression
       (this.calcIncrement >= 52);
+      this.calcPeso = (25.64 * this.incrementPeso);
       this.increment = (981.03 * this.calcIncrement);
       this.result = this.increment + this.calcPeso;
       this.result.toFixed(2);

@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { Driver } from './Drivers/shared/driver';
+import { ChatAdapter } from 'ng-chat';
+import { Http } from '@angular/http';
+
 
 
 @Component({
@@ -24,25 +27,7 @@ export class AppComponent {
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
     this.bodyText = 'Caminhoneiro Aceitou o transporte';
-    window.addEventListener('online', this.onNetworkStatusChange.bind(this));
-    window.addEventListener('offline', this.onNetworkStatusChange.bind(this));
 
-  }
-  viewTransport(latDriver, lngDriver) {
-    this.latDriver = this.lat2;
-    this.lngDriver = this.lng2;
-    this.message = this.driver.nome + ' aceitou o transporte de sua carga. ele está na seguinte localização:'
-      // tslint:disable-next-line: no-unused-expression
-      // tslint:disable-next-line: align
-      + latDriver + ' latitude  e ' +
-      + lngDriver + ' longitude ';
-
-  }
-  offline: boolean;
-
-  onNetworkStatusChange() {
-    this.offline = !navigator.onLine;
-    console.log('offline ' + this.offline);
   }
 
 

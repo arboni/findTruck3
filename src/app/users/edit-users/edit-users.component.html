@@ -17,16 +17,33 @@
               placeholder="informe o email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 
-            <label>Tipo Caminhao</label>
+           <!-- <label>Tipo usuario</label>
+            <input type="text" class="form-control" [(ngModel)]="user.tipoUser" name="tipoUser"
+              placeholder="informe o a tipo -Caminhoneiro, ">
+            <small id="password" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+
+            <div class="form-group">
+              <label for="user.tipoUser">Tipo de Cadastro</label>
+              <select class="form-control"  [(ngModel)]="user.tipoUser" name="tipoUser"
+              placeholder="informe o a tipo de Cadastro ">
+                <option>Caminhoneiro</option>
+                <option>Pessoa Jurídica</option>
+                <option>Pessoa física</option>
+                <option>Visitante</option>
+                <option>Admin</option>
+              </select>
+            </div>
+            <label>Senha</label>
             <input type="text" class="form-control" [(ngModel)]="user.password" name="password"
-              placeholder="informe o a senha">
+              placeholder="informe a sua senha">
             <small id="password" class="form-text text-muted">We'll never share your email with anyone else.</small>
 
-            <label>Nome</label>
+            <label>Senha</label>
             <input type="text" class="form-control" [(ngModel)]="user.password" name="password"
               placeholder="informe novamente a sua senha">
             <small id="password" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
+
           <div class="card-footer">
             <button type="submit" class="btn btn-primary">Salvar</button>
 

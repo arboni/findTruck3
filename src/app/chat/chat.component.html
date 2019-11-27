@@ -1,21 +1,38 @@
-<app-header></app-header>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="row ml-4 mt-4">
-    <div class=" chatPanel ">
-  <h2>FindTruck3 - chat</h2>
-  <div class="chatPanel" *ngFor="let message of messages | async">
-    {{message.value}}>
-    <label for="message">{{message}}</label>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat-Exemplo</title>
+</head>
+
+<body>
+
+
+  <app-header></app-header>
+  <div class="jumbotron">
+   <h1>FindTruck chat</h1>
+   <h2>Entre em contato com a equipe de suporte do site para esclarecer alguma dúvida</h2>
   </div>
-  <div class="chatButton">
-    <input class="message" type="text" #message placeholder="Your message..">
-    <button (click)="newMessage(message.$value)">Enviar</button>
+<div class="container">
+    <img src="//src/assets/images/logoFindTRuck.jpg"  alt="">
 </div>
 
-<div class="mensagens">
-  <h2>Mensagens do chat</h2>
-  <div class="card-footer">
-      <h4>{{message.value}}</h4>
-    </div>
-</div>
-</div>
+ <!--Start of Tawk.to Script-->
+ <script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/5dd2ef31d96992700fc80bb8/default';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+
+</html>

@@ -16,6 +16,17 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestCache } from './cache/request-cache.service';
 import { CachingInterceptor } from './cache/caching-interceptor.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs'
+import * as Rx from 'rxjs/Rx';
+import * as map from "rxjs";
+import * as firebase from 'firebase/app';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
+
+import { RouteReuseStrategy } from '@angular/router';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
 
 
 
@@ -33,11 +44,12 @@ import { ListCargasComponent } from './cargas/list-cargas/list-cargas.component'
 import { CalculadoraComponent } from './calculadora/components/calculadora.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './auth/loading-spinner/loading-spinner.component';
-import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth/auth.service';
 import { AceiteTransporteComponent } from './aceite-transporte/aceite-transporte.component';
 import { ListUsersComponent } from './users/list-users/list-users.component';
 import { EditUsersComponent} from './users/edit-users/edit-users.component';
+import { HttpModule } from '@angular/http';
+import { AuthGuard } from './shared/guard/auth.guard';
 import { ChatComponent } from './chat/chat.component';
 
 
@@ -59,11 +71,13 @@ import { ChatComponent } from './chat/chat.component';
     CalculadoraComponent,
     AuthComponent,
     LoadingSpinnerComponent,
-    LoginComponent,
     AceiteTransporteComponent,
     ListUsersComponent,
     EditUsersComponent,
     ChatComponent,
+
+
+
 
 
 
@@ -84,17 +98,15 @@ import { ChatComponent } from './chat/chat.component';
       apiKey: 'AIzaSyCYqiJwwltQZk70bd7b13OaeV5vAAelRLw'
     }),
     AgmDirectionModule,
-    NgbModule
+    NgbModule,
+    HttpModule,
+    MDBBootstrapModule,
+
+
+
 
   ],
-  providers: [LocalComponent,
-    AuthService,
-    ListComponent,
-    ListCargasComponent,
-    CalculadoraComponent,
-    GoogleMapsAPIWrapper,
-    { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
-  ],
+  providers: [AuthService, AuthGuard, GoogleMapsAPIWrapper ],
   bootstrap: [AppComponent],
 
 })

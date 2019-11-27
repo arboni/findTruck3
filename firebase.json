@@ -3,7 +3,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "dist/findtruck3",
+    "public": "dist/",
     "ignore": [
       "firebase.json",
       "**/.*",

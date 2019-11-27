@@ -1,40 +1,52 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { componentFactoryName } from '@angular/compiler';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { AuthService } from './auth.service';
-import { auth } from 'firebase';
 
 @Component({
   selector: 'app-auth',
-  templateUrl: './auth.component.html'
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css']
 })
-export class AuthComponent {
-  [x: string]: any;
-  isLoginMode = true;
+export class AuthComponent implements OnInit {
 
-  onSwitchMode() {
-    this.isLoginMode = !this.isLoginMode;
+
+  showMenu = new EventEmitter<boolean>();
+  userData: any;
+  router: any;
+  profile: string;
+
+  ngOnInit(): void {
+    this.authService.subscribe(
+      showM => {
+        return this.showMenu = showM;
+      }
+    )
+  }
+  constructor( public authService: AuthService) {}
+
+  email: string;
+  password: string;
+
+
+  signUp() {
+    this.authService.SignUp(this.email, this.password);
+    this.email = '';
+    this.password = '';
+
   }
 
-  onSubmit(form: NgForm) {
-    console.log(form.value);
-    form.reset();
+  signIn() {
+    this.authService.SignIn(this.email, this.password);
+    this.email = '';
+    this.password = '';
+    if (this.email === 'arboniguitar@gmail.com'){
+      this.profile = 'admin';
+    }else{
+      this.profile = 'normal';
+    }
   }
 
-  SigninWithGoogle() {
-    return this.OAuthProvider(new auth.GoogleAuthProvider())
-        .then(res => {
-            console.log('Successfully logged in!');
-        }).catch(error => {
-            console.log(error);
-        });
-}
-
-// Firebase Logout
-SignOut() {
-    return this.afAuth.auth.signOut().then(() => {
-        this.router.navigate(['login']);
-    });
-}
+  signOut() {
+    this.authService.SignOut();
+  }
 
 }
